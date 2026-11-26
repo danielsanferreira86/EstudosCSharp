@@ -1,4 +1,5 @@
 using EstudosCSharp.Data;
+using EstudosCSharp.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,11 @@ builder.Services.AddRazorPages();
 
 // Registra a classe de conexão
 builder.Services.AddScoped<Conexao>();
+
+// Registra os repositórios do BD
+builder.Services.AddScoped<CidadeRepository>();
+builder.Services.AddScoped<EstadoRepository>();
+builder.Services.AddScoped<UsuariosRepository>();
 
 var app = builder.Build();
 
