@@ -5,11 +5,20 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>dbc95e51-cf1e-4ce3-8f33-9d43396e85c2</UserSecretsId>
+
+    <Version>0.1.0</Version>
+    <Product>AutoCore-DMS</Product>
+    <Authors>Daniel S. Ferreira</Authors>
+    <Description>Sistema web de gestão de concessionárias.</Description>    
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.2.0" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="7.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Docs\" />
   </ItemGroup>
   
 </Project>
