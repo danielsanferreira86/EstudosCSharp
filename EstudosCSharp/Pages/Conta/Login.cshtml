@@ -1,0 +1,118 @@
+﻿@page
+@model EstudosCSharp.Pages.Conta.LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "_LayoutLogin";
+}
+
+<div class="login-card">
+
+    <div class="login-header">
+
+        <div class="login-logo">
+            &#128095;
+        </div>
+
+        <h1>Loja de Calçados</h1>
+
+        <p>Sistema de Gestão Comercial</p>
+
+    </div>
+
+    <hr />
+
+    <div class="login-body">
+
+        <h2>Bem-vindo!</h2>
+
+        <p class="text-muted mb-4">
+            Informe suas credenciais para continuar.
+        </p>
+
+        <form method="post">
+
+            <input type="hidden" asp-for="ReturnUrl" />
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger mb-3">
+            </div>
+
+            <div class="mb-3">
+
+                <label asp-for="Credenciais.Login"
+                       class="form-label">
+                </label>
+
+                <input asp-for="Credenciais.Login"
+                       class="form-control login-input"
+                       placeholder="Informe seu usuário"
+                       autocomplete="username"
+                       autofocus />
+
+                <span asp-validation-for="Credenciais.Login"
+                      class="text-danger validation-message">
+                </span>
+
+            </div>
+
+            <div class="mb-4">
+
+                <label asp-for="Credenciais.Senha"
+                       class="form-label">
+                </label>
+
+                <div class="input-group">
+
+                    <input asp-for="Credenciais.Senha"
+                           id="senha"
+                           type="password"
+                           class="form-control login-input"
+                           placeholder="Informe sua senha"
+                           autocomplete="current-password" />
+
+                    <button type="button"
+                            id="btnExibirSenha"
+                            class="btn btn-outline-secondary"
+                            aria-label="Exibir senha"
+                            aria-pressed="false">
+
+                        Mostrar
+
+                    </button>
+
+                </div>
+
+                <span asp-validation-for="Credenciais.Senha"
+                      class="text-danger validation-message">
+                </span>
+
+            </div>
+
+            <button type="submit"
+                    class="btn btn-login w-100">
+
+                Entrar no sistema
+
+            </button>
+
+        </form>
+
+    </div>
+
+    <div class="login-footer">
+
+        <hr />
+
+        <p>EstudosCSharp &bull; Versão 1.0</p>
+
+        <small>Sistema de Gestão Comercial</small>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}
