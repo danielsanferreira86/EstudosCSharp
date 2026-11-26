@@ -1,0 +1,29 @@
+﻿@page
+@model EstudosCSharp.Pages.Testes.AdministradorModel
+
+@{
+    ViewData["Title"] = "Teste de Permissão";
+}
+
+<div class="container mt-5">
+
+    <div class="alert alert-success">
+
+        <h2>Acesso autorizado!</h2>
+
+        <p>
+            Você possui permissão de administrador.
+        </p>
+
+        <p>
+            Usuário: @User.Identity?.Name
+        </p>
+
+    </div>
+
+    <a asp-page="/Index"
+       class="btn btn-primary">
+        Voltar
+    </a>
+
+</div>

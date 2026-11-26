@@ -2,11 +2,20 @@ using EstudosCSharp.Data;
 using EstudosCSharp.Repositories;
 using EstudosCSharp.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using EstudosCSharp.Security;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(options => {
+    // Protege todas as páginas da aplicação.
+    options.Conventions.AuthorizeFolder("/");
+
+    // Permite acesso sem autenticação.
+    options.Conventions.AllowAnonymousToPage("/Conta/Login");
+
+    options.Conventions.AllowAnonymousToPage("/Error");
+});
 
 // Registra a classe de conexão
 builder.Services.AddScoped<Conexao>();
@@ -18,6 +27,9 @@ builder.Services.AddScoped<UsuarioRepository>();
 
 // Registra o serviço de autenticação
 builder.Services.AddScoped<AutenticacaoService>();
+
+// Registra a validação dos cookies
+builder.Services.AddScoped<ValidacaoCookie>();
 
 // Autenticação por Cookie.
 builder.Services
@@ -42,10 +54,51 @@ builder.Services
         options.ExpireTimeSpan = TimeSpan.FromHours(8);
 
         options.SlidingExpiration = true;
+
+        options.EventsType = typeof(ValidacaoCookie);
     });
 
 // Autorização.
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options => {
+    // CONSULTAR ESTADOS
+    options.AddPolicy(
+        Permissoes.ConsultarEstados,
+        policy => policy.RequireRole(
+            Perfis.Administrador,
+            Perfis.Padrao));
+
+    // GERENCIAR ESTADOS
+    options.AddPolicy(
+        Permissoes.GerenciarEstados,
+        policy => policy.RequireRole(
+            Perfis.Administrador));
+
+    // CONSULTAR CIDADES
+    options.AddPolicy(
+        Permissoes.ConsultarCidades,
+        policy => policy.RequireRole(
+            Perfis.Administrador,
+            Perfis.Padrao));
+
+    // GERENCIAR CIDADES
+    options.AddPolicy(
+        Permissoes.GerenciarCidades,
+        policy => policy.RequireRole(
+            Perfis.Administrador));
+
+    // GERENCIAR USUÁRIOS
+    options.AddPolicy(
+        Permissoes.GerenciarUsuarios,
+        policy => policy.RequireRole(
+            Perfis.Administrador));
+
+    // ALTERAR A PRÓPRIA SENHA
+    options.AddPolicy(
+        Permissoes.AlterarPropriaSenha,
+        policy => policy.RequireRole(
+            Perfis.Administrador,
+            Perfis.Padrao));
+});
 
 var app = builder.Build();
 
