@@ -53,15 +53,19 @@
         </div>
 
         @if (podeConsultarEstados) {
-            <span class="menu-item disabled"
-                  aria-disabled="true">
+            <a asp-page="/Cadastros/Estados/Index"
+               class="menu-item @(paginaAtual.StartsWith("/Cadastros/Estados",
+                          StringComparison.OrdinalIgnoreCase)
+                          ? "active" : "")">
 
-                <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5l6-2 6 2 6-2v16l-6 2-6-2-6 2z M9 3v16 M15 5v16" /></svg></span>
+            <span class="menu-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5l6-2 6 2 6-2v16l-6 2-6-2-6 2z M9 3v16 M15 5v16" /></svg>
+            </span>
 
                 <span>Estados</span>
 
-            </span>
-        }
+            </a>
+          }
 
         @if (podeConsultarCidades) {
             <span class="menu-item disabled"

@@ -1,0 +1,785 @@
+﻿/* ========================================
+   AUTOCORE-DMS
+   PADRÃO VISUAL DOS CADASTROS
+   ======================================== */
+
+:root {
+    --cad-primary: #dc2626;
+    --cad-primary-hover: #b91c1c;
+    --cad-background: #151515;
+    --cad-surface: #1c1c1c;
+    --cad-border: #303030;
+    --cad-text: #f4f4f5;
+    --cad-muted: #a1a1aa;
+    --cad-hover: #202020;
+}
+
+
+/* ========================================
+   CABEÇALHO
+   ======================================== */
+
+.cad-breadcrumb {
+    font-size: 12px;
+    color: var(--cad-muted);
+    margin-bottom: 14px;
+}
+
+.cad-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.cad-title {
+    color: var(--cad-text);
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0 0 6px;
+}
+
+.cad-subtitle {
+    color: var(--cad-muted);
+    font-size: 14px;
+    margin: 0;
+}
+
+
+/* ========================================
+   CONTAINER PRINCIPAL
+   ======================================== */
+
+.cad-card {
+    background-color: var(--cad-background);
+    border: 1px solid var(--cad-border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+/* ========================================
+   BARRA DE PESQUISA
+   ======================================== */
+
+.cad-toolbar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 20px;
+    border-bottom: 1px solid var(--cad-border);
+}
+
+.cad-search {
+    flex: 1;
+    min-width: 200px;
+}
+
+.cad-input,
+.cad-select {
+    background-color: var(--cad-surface);
+    color: var(--cad-text);
+    border: 1px solid var(--cad-border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 14px;
+    min-height: 42px;
+}
+
+.cad-input {
+    width: 100%;
+}
+
+    .cad-input::placeholder {
+        color: var(--cad-muted);
+    }
+
+    .cad-input:focus,
+    .cad-select:focus {
+        outline: none;
+        border-color: var(--cad-primary);
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+    }
+
+.cad-page-size {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--cad-muted);
+    font-size: 13px;
+}
+
+.cad-select {
+    color-scheme: dark;
+}
+
+
+/* ========================================
+   BOTÕES
+   ======================================== */
+
+.cad-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 18px;
+    min-height: 42px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.cad-btn-primary {
+    background-color: var(--cad-primary);
+    color: #ffffff;
+}
+
+    .cad-btn-primary:hover {
+        background-color: var(--cad-primary-hover);
+        color: #ffffff;
+    }
+
+.cad-btn-secondary {
+    background-color: var(--cad-surface);
+    border-color: var(--cad-border);
+    color: var(--cad-text);
+}
+
+    .cad-btn-secondary:hover {
+        background-color: var(--cad-hover);
+        color: var(--cad-text);
+        border-color: #52525b;
+    }
+
+.cad-btn:disabled,
+.cad-btn-action:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+
+/* ========================================
+   TABELA
+   ======================================== */
+
+.cad-table {
+    --bs-table-color: var(--cad-text);
+    --bs-table-bg: var(--cad-background);
+    --bs-table-border-color: var(--cad-border);
+    --bs-table-hover-color: var(--cad-text);
+    --bs-table-hover-bg: var(--cad-hover);
+    width: 100%;
+    margin-bottom: 0;
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+    .cad-table thead th {
+        background-color: var(--cad-surface);
+        color: var(--cad-muted);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        padding: 15px 18px;
+        white-space: nowrap;
+        border-bottom: 1px solid var(--cad-border);
+    }
+
+    .cad-table tbody td {
+        padding: 14px 18px;
+        border-bottom: 1px solid var(--cad-border);
+    }
+
+    .cad-table tbody tr:hover > * {
+        background-color: var(--cad-hover);
+    }
+
+    .cad-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    .cad-table .cad-id {
+        color: var(--cad-muted);
+        width: 80px;
+    }
+
+.cad-tag {
+    display: inline-block;
+    background-color: #27272a;
+    border: 1px solid #3f3f46;
+    border-radius: 5px;
+    color: #e4e4e7;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 9px;
+}
+
+
+/* ========================================
+   AÇÕES DA TABELA
+   ======================================== */
+
+.cad-actions-column {
+    width: 160px;
+    text-align: center;
+}
+
+.cad-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.cad-btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--cad-border);
+    background-color: transparent;
+    font-size: 12px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cad-btn-edit {
+    color: #d4d4d8;
+}
+
+    .cad-btn-edit:hover:not(:disabled) {
+        background-color: #27272a;
+        color: #ffffff;
+    }
+
+.cad-btn-delete {
+    color: #f87171;
+}
+
+    .cad-btn-delete:hover:not(:disabled) {
+        background-color: #450a0a;
+        border-color: #991b1b;
+        color: #fca5a5;
+    }
+
+
+/* ========================================
+   ESTADO VAZIO
+   ======================================== */
+
+.cad-table .cad-empty {
+    text-align: center;
+    padding: 45px 20px;
+    color: var(--cad-muted);
+}
+
+.cad-empty strong {
+    display: block;
+    color: var(--cad-text);
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.cad-empty span {
+    display: block;
+    font-size: 13px;
+}
+
+
+/* ========================================
+   RODAPÉ E PAGINAÇÃO
+   ======================================== */
+
+.cad-table-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 18px 20px;
+    border-top: 1px solid var(--cad-border);
+}
+
+.cad-record-info {
+    color: var(--cad-muted);
+    font-size: 13px;
+}
+
+.cad-pagination {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.cad-page-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    min-height: 34px;
+    padding: 6px 10px;
+    border: 1px solid var(--cad-border);
+    border-radius: 5px;
+    background-color: var(--cad-surface);
+    color: var(--cad-text);
+    font-size: 13px;
+    text-decoration: none;
+}
+
+    .cad-page-link:hover {
+        background-color: var(--cad-hover);
+        border-color: var(--cad-primary);
+        color: #ffffff;
+    }
+
+    .cad-page-link.active {
+        background-color: var(--cad-primary);
+        border-color: var(--cad-primary);
+        color: #ffffff;
+    }
+
+    .cad-page-link.disabled {
+        opacity: 0.35;
+        pointer-events: none;
+    }
+
+
+/* ========================================
+   MENSAGENS DO SISTEMA
+   ======================================== */
+
+.cad-alert {
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    border: 1px solid;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.cad-alert-success {
+    background-color: #052e16;
+    border-color: #166534;
+    color: #86efac;
+}
+
+.cad-alert-error {
+    background-color: #450a0a;
+    border-color: #991b1b;
+    color: #fca5a5;
+}
+
+
+/* ========================================
+   ACESSIBILIDADE
+   ======================================== */
+
+.cad-btn:focus-visible,
+.cad-btn-action:focus-visible,
+.cad-page-link:focus-visible {
+    outline: 2px solid #f87171;
+    outline-offset: 3px;
+}
+
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    .cad-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+        .cad-header .cad-btn {
+            width: 100%;
+        }
+
+    .cad-toolbar {
+        padding: 15px;
+    }
+
+    .cad-search {
+        flex-basis: 100%;
+        min-width: 0;
+    }
+
+    .cad-page-size {
+        flex-basis: 100%;
+    }
+
+    .cad-table-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cad-table thead th,
+    .cad-table tbody td {
+        padding: 12px;
+    }
+}
+
+/* ========================================
+   INDICADORES DOS CADASTROS
+   ======================================== */
+
+.cad-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.cad-stat-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: var(--cad-background);
+    border: 1px solid var(--cad-border);
+    border-left: 3px solid var(--cad-primary);
+    border-radius: 8px;
+    padding: 18px 20px;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+    .cad-stat-card:hover {
+        background-color: var(--cad-hover);
+        border-color: var(--cad-primary);
+    }
+
+.cad-stat-label {
+    color: var(--cad-muted);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.cad-stat-value {
+    color: var(--cad-text);
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+}
+
+.cad-stat-detail {
+    color: var(--cad-muted);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+
+/* RESPONSIVIDADE DOS INDICADORES */
+
+@media (max-width: 992px) {
+
+    .cad-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+
+    .cad-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   FORMULÁRIOS DE CADASTRO
+   ======================================== */
+
+.cad-form {
+    width: 100%;
+    max-width: 900px;
+}
+
+
+/* ========================================
+   CABEÇALHO DO FORMULÁRIO
+   ======================================== */
+
+.cad-form-header {
+    padding: 22px 25px;
+    border-bottom: 1px solid var(--cad-border);
+}
+
+.cad-form-title {
+    color: var(--cad-text);
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 6px;
+}
+
+.cad-form-subtitle {
+    color: var(--cad-muted);
+    font-size: 13px;
+    margin: 0;
+}
+
+
+/* ========================================
+   CORPO DO FORMULÁRIO
+   ======================================== */
+
+.cad-form-body {
+    padding: 25px;
+}
+
+.cad-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.cad-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.cad-field-full {
+    grid-column: 1 / -1;
+}
+
+.cad-label {
+    color: var(--cad-text);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.cad-required {
+    color: #f87171;
+    font-weight: 600;
+}
+
+.cad-field-help {
+    color: var(--cad-muted);
+    font-size: 12px;
+}
+
+.cad-uppercase {
+    text-transform: uppercase;
+}
+
+
+/* ========================================
+   INFORMAÇÕES DO FORMULÁRIO
+   ======================================== */
+
+.cad-form-info {
+    color: var(--cad-muted);
+    font-size: 12px;
+    margin-top: 25px;
+    padding-top: 18px;
+    border-top: 1px solid var(--cad-border);
+}
+
+
+/* ========================================
+   VALIDAÇÕES
+   ======================================== */
+
+.cad-validation {
+    color: #f87171;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.cad-validation-summary {
+    background-color: #450a0a;
+    color: #fca5a5;
+    border: 1px solid #991b1b;
+    border-radius: 6px;
+    padding: 15px 18px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+    .cad-validation-summary ul {
+        margin: 0;
+        padding-left: 20px;
+    }
+
+    .cad-validation-summary.validation-summary-valid {
+        display: none;
+    }
+
+.cad-validation.field-validation-valid {
+    display: none;
+}
+
+.cad-input.input-validation-error,
+.cad-select.input-validation-error {
+    border-color: #ef4444;
+    background-color: #241515;
+}
+
+    .cad-input.input-validation-error:focus,
+    .cad-select.input-validation-error:focus {
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+    }
+
+
+/* ========================================
+   RODAPÉ DO FORMULÁRIO
+   ======================================== */
+
+.cad-form-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 25px;
+    border-top: 1px solid var(--cad-border);
+}
+
+
+/* ========================================
+   RESPONSIVIDADE DOS FORMULÁRIOS
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    .cad-form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .cad-form-header,
+    .cad-form-body,
+    .cad-form-footer {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .cad-form-footer {
+        flex-direction: column-reverse;
+    }
+
+        .cad-form-footer .cad-btn {
+            width: 100%;
+        }
+}
+
+/* ========================================
+   INTEGRAÇÕES COM SERVIÇOS EXTERNOS
+   ======================================== */
+
+.cad-input-group {
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+}
+
+    .cad-input-group .cad-input {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .cad-input-group .cad-btn {
+        white-space: nowrap;
+    }
+
+
+/* ========================================
+   CAMPOS SOMENTE PARA LEITURA
+   ======================================== */
+
+.cad-input[readonly] {
+    background-color: #121212;
+    color: var(--cad-muted);
+    cursor: default;
+}
+
+/* ========================================
+   MENSAGENS DA CONSULTA IBGE
+   ======================================== */
+
+.cad-ibge-message {
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 12px 15px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+    .cad-ibge-message[hidden] {
+        display: none;
+    }
+
+
+/* CONSULTA REALIZADA COM SUCESSO */
+
+.cad-ibge-success {
+    background-color: #052e16;
+    border-color: #166534;
+    color: #86efac;
+}
+
+
+/* ERRO DURANTE A CONSULTA */
+
+.cad-ibge-error {
+    background-color: #450a0a;
+    border-color: #991b1b;
+    color: #fca5a5;
+}
+
+
+/* CONSULTA EM ANDAMENTO */
+
+.cad-ibge-loading {
+    background-color: #172554;
+    border-color: #1e40af;
+    color: #93c5fd;
+}
+
+
+/* INFORMAÇÕES DA FONTE OFICIAL */
+
+.cad-ibge-info {
+    background-color: #171717;
+    border: 1px solid var(--cad-border);
+    border-left: 3px solid #71717a;
+    border-radius: 6px;
+    padding: 15px;
+    color: var(--cad-muted);
+    font-size: 12px;
+}
+
+
+/* BOTÕES DESABILITADOS */
+
+.cad-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 480px) {
+
+    .cad-input-group {
+        flex-direction: column;
+    }
+
+        .cad-input-group .cad-btn {
+            width: 100%;
+        }
+}

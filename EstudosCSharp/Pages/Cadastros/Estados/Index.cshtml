@@ -1,0 +1,377 @@
+﻿@page
+@model EstudosCSharp.Pages.Cadastros.Estados.IndexModel
+
+@using EstudosCSharp.Security
+@using Microsoft.AspNetCore.Authorization
+
+@inject IAuthorizationService AuthorizationService
+
+@{
+    ViewData["Title"] = "Estados";
+
+    var podeGerenciar =
+        (await AuthorizationService.AuthorizeAsync(
+            User,
+            Permissoes.GerenciarEstados)).Succeeded;
+}
+
+<!-- CAMINHO DE NAVEGAÇÃO -->
+<div class="cad-breadcrumb">
+
+    Cadastros / Estados
+
+</div>
+
+<!-- CABEÇALHO DO CADASTRO -->
+<div class="cad-header">
+
+    <div>
+
+        <h1 class="cad-title">
+            Estados
+        </h1>
+
+        <p class="cad-subtitle">
+            Gerenciamento das unidades federativas.
+        </p>
+
+    </div>
+
+    @if (podeGerenciar) {
+        <a asp-page="./Create"
+           class="cad-btn cad-btn-primary">
+
+            + Novo estado
+
+        </a>
+    }
+
+</div>
+
+<!-- MENSAGEM DE SUCESSO -->
+@if (TempData["MensagemSucesso"] is string sucesso) {
+    <div class="cad-alert cad-alert-success"
+         role="status">
+
+        @sucesso
+
+    </div>
+}
+
+<!-- MENSAGEM DE ERRO -->
+@if (TempData["MensagemErro"] is string erro) {
+    <div class="cad-alert cad-alert-error"
+         role="alert">
+
+        @erro
+
+    </div>
+}
+
+<!-- INDICADORES DO CADASTRO -->
+<div class="cad-stats">
+
+    <div class="cad-stat-card">
+
+        <span class="cad-stat-label">
+            Total de estados
+        </span>
+
+        <strong class="cad-stat-value">
+            @Model.TotalGeral
+        </strong>
+
+    </div>
+
+    <div class="cad-stat-card">
+
+        <span class="cad-stat-label">
+            Registros encontrados
+        </span>
+
+        <strong class="cad-stat-value">
+            @Model.TotalRegistros
+        </strong>
+
+    </div>
+
+    <div class="cad-stat-card">
+
+        <span class="cad-stat-label">
+            Registros por página
+        </span>
+
+        <strong class="cad-stat-value">
+            @Model.TamanhoPagina
+        </strong>
+
+    </div>
+
+    <div class="cad-stat-card">
+
+        <span class="cad-stat-label">
+            Página atual
+        </span>
+
+        <strong class="cad-stat-value">
+            @Model.PaginaAtual
+            <span class="cad-stat-detail">
+                / @Model.TotalPaginas
+            </span>
+        </strong>
+
+    </div>
+
+</div>
+
+<!-- CONTAINER PRINCIPAL -->
+<div class="cad-card">
+
+    <!-- FORMULÁRIO DE PESQUISA -->
+    <form method="get"
+          asp-page="./Index"
+          class="cad-toolbar">
+
+        <input type="hidden"
+               name="PaginaAtual"
+               value="1" />
+
+        <div class="cad-search">
+
+            <input asp-for="Pesquisa"
+                   class="cad-input"
+                   placeholder="Pesquisar nome, UF ou IBGE..."
+                   aria-label="Pesquisar estados"
+                   maxlength="50" />
+
+        </div>
+
+        <button type="submit"
+                class="cad-btn cad-btn-primary">
+
+            Pesquisar
+
+        </button>
+
+        <a asp-page="./Index"
+           asp-route-TamanhoPagina="@Model.TamanhoPagina"
+           class="cad-btn cad-btn-secondary">
+
+            Limpar
+
+        </a>
+
+        <div class="cad-page-size">
+
+            <label asp-for="TamanhoPagina">
+                Registros:
+            </label>
+
+            <select asp-for="TamanhoPagina"
+                    class="cad-select">
+
+                <option value="5">5</option>
+
+                <option value="10">10</option>
+
+                <option value="20">20</option>
+
+            </select>
+
+        </div>
+
+    </form>
+
+    <!-- TABELA -->
+    <div class="table-responsive">
+
+        <table class="table cad-table">
+
+            <thead>
+
+                <tr>
+
+                    <th scope="col">ID</th>
+
+                    <th scope="col">Nome do Estado</th>
+
+                    <th scope="col">UF</th>
+
+                    <th scope="col">Código IBGE</th>
+
+                    @if (podeGerenciar) {
+                        <th scope="col"
+                            class="cad-actions-column">
+
+                            Ações
+
+                        </th>
+                    }
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @if (Model.Estados.Count == 0) {
+                    <tr>
+
+                        <td colspan="@(podeGerenciar ? 5 : 4)"
+                            class="cad-empty">
+
+                            <strong>
+                                Nenhum registro encontrado.
+                            </strong>
+
+                            <span>
+                                Tente pesquisar utilizando
+                                outros critérios.
+                            </span>
+
+                        </td>
+
+                    </tr>
+                } else {
+                    @foreach (var estado in Model.Estados) {
+                        <tr>
+
+                            <td class="cad-id">
+                                @estado.ID
+                            </td>
+
+                            <td>
+                                @estado.Nome
+                            </td>
+
+                            <td>
+
+                                <span class="cad-tag">
+                                    @estado.UF
+                                </span>
+
+                            </td>
+
+                            <td>
+                                @estado.Codigo_IBGE
+                            </td>
+
+                            @if (podeGerenciar) {
+                                <td>
+
+                                    <div class="cad-actions">
+
+                                        <button type="button"
+                                                class="cad-btn-action cad-btn-edit"
+                                                disabled
+                                                title="Alteração em desenvolvimento">
+
+                                            Editar
+
+                                        </button>
+
+                                        <button type="button"
+                                                class="cad-btn-action cad-btn-delete"
+                                                disabled
+                                                title="Exclusão em desenvolvimento">
+
+                                            Excluir
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+                            }
+
+                        </tr>
+                    }
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- RODAPÉ DA TABELA -->
+    <div class="cad-table-footer">
+
+        <div class="cad-record-info">
+
+            Exibindo @Model.PrimeiroRegistro
+            a @Model.UltimoRegistro
+            de @Model.TotalRegistros registros
+
+        </div>
+
+        <!-- PAGINAÇÃO -->
+        @if (Model.TotalPaginas > 1) {
+            <nav class="cad-pagination"
+                 aria-label="Paginação de estados">
+
+                @if (Model.TemPaginaAnterior) {
+                    <a asp-page="./Index"
+                       asp-route-Pesquisa="@Model.Pesquisa"
+                       asp-route-PaginaAtual="@(Model.PaginaAtual - 1)"
+                       asp-route-TamanhoPagina="@Model.TamanhoPagina"
+                       class="cad-page-link">
+
+                        Anterior
+
+                    </a>
+                } else {
+                    <span class="cad-page-link disabled"
+                          aria-disabled="true">
+
+                        Anterior
+
+                    </span>
+                }
+
+                @for (int i = 1; i <= Model.TotalPaginas; i++) {
+                    @if (i == Model.PaginaAtual) {
+                        <span class="cad-page-link active"
+                              aria-current="page">
+
+                            @i
+
+                        </span>
+                    } else {
+                        <a asp-page="./Index"
+                           asp-route-Pesquisa="@Model.Pesquisa"
+                           asp-route-PaginaAtual="@i"
+                           asp-route-TamanhoPagina="@Model.TamanhoPagina"
+                           class="cad-page-link">
+
+                            @i
+
+                        </a>
+                    }
+                }
+
+                @if (Model.TemProximaPagina) {
+                    <a asp-page="./Index"
+                       asp-route-Pesquisa="@Model.Pesquisa"
+                       asp-route-PaginaAtual="@(Model.PaginaAtual + 1)"
+                       asp-route-TamanhoPagina="@Model.TamanhoPagina"
+                       class="cad-page-link">
+
+                        Próxima
+
+                    </a>
+                } else {
+                    <span class="cad-page-link disabled"
+                          aria-disabled="true">
+
+                        Próxima
+
+                    </span>
+                }
+
+            </nav>
+        }
+
+    </div>
+
+</div>

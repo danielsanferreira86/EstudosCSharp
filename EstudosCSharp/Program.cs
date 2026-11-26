@@ -100,6 +100,21 @@ builder.Services.AddAuthorization(options => {
             Perfis.Padrao));
 });
 
+// SERVIÇO DE CACHE EM MEMÓRIA
+builder.Services.AddMemoryCache();
+
+// CLIENTE HTTP PARA A API DO IBGE
+builder.Services.AddHttpClient<IbgeService>(client => {
+    client.BaseAddress = new Uri(
+        builder.Configuration["Ibge:BaseUrl"]
+        ?? throw new InvalidOperationException(
+            "URL da API do IBGE não configurada."));
+
+    client.Timeout = TimeSpan.FromSeconds(
+        builder.Configuration.GetValue<int>(
+            "Ibge:TimeoutSegundos", 10));
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

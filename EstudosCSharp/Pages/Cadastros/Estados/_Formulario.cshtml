@@ -1,0 +1,111 @@
+﻿@model EstudosCSharp.ViewModels.EstadoViewModel
+
+<div class="cad-form-grid">
+
+    <!-- CÓDIGO IBGE -->
+    <div class="cad-field cad-field-full">
+
+        <label asp-for="Codigo_IBGE"
+               class="cad-label">
+
+            Código IBGE
+            <span class="cad-required">*</span>
+
+        </label>
+
+        <div class="cad-input-group">
+
+            <input asp-for="Codigo_IBGE"
+                   class="cad-input"
+                   data-ibge-codigo
+                   maxlength="2"
+                   inputmode="numeric"
+                   placeholder="Ex.: 51"
+                   autocomplete="off" />
+
+            <button type="button"
+                    id="btnConsultarIbge"
+                    class="cad-btn cad-btn-secondary">
+
+                Consultar IBGE
+
+            </button>
+
+        </div>
+
+        <small class="cad-field-help">
+            Informe o código oficial da unidade federativa.
+        </small>
+
+        <span asp-validation-for="Codigo_IBGE"
+              class="cad-validation">
+        </span>
+
+        <div id="mensagemIbge"
+             class="cad-ibge-message"
+             role="status"
+             aria-live="polite"
+             hidden>
+        </div>
+
+    </div>
+
+    <!-- NOME DO ESTADO -->
+    <div class="cad-field">
+
+        <label asp-for="Nome"
+               class="cad-label">
+
+            Nome do estado
+            <span class="cad-required">*</span>
+
+        </label>
+
+        <input asp-for="Nome"
+               class="cad-input"
+               data-ibge-nome
+               placeholder="Preenchimento automático"
+               readonly />
+
+        <span asp-validation-for="Nome"
+              class="cad-validation">
+        </span>
+
+    </div>
+
+    <!-- UF -->
+    <div class="cad-field">
+
+        <label asp-for="UF"
+               class="cad-label">
+
+            UF
+            <span class="cad-required">*</span>
+
+        </label>
+
+        <input asp-for="UF"
+               class="cad-input"
+               data-ibge-uf
+               placeholder="Preenchimento automático"
+               readonly />
+
+        <span asp-validation-for="UF"
+              class="cad-validation">
+        </span>
+
+    </div>
+
+    <!-- INFORMAÇÕES DO IBGE -->
+    <div class="cad-field-full">
+
+        <div class="cad-ibge-info">
+
+            Dados de identificação obtidos
+            da base oficial de localidades do IBGE.
+
+        </div>
+
+    </div>
+
+</div>
