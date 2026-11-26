@@ -1,5 +1,6 @@
 using EstudosCSharp.Data;
 using EstudosCSharp.Repositories;
+using EstudosCSharp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,10 @@ builder.Services.AddScoped<Conexao>();
 // Registra os repositórios do BD
 builder.Services.AddScoped<CidadeRepository>();
 builder.Services.AddScoped<EstadoRepository>();
-builder.Services.AddScoped<UsuariosRepository>();
+builder.Services.AddScoped<UsuarioRepository>();
+
+// Registra o serviço de autenticação
+builder.Services.AddScoped<AutenticacaoService>();
 
 var app = builder.Build();
 

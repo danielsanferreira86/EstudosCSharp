@@ -1,0 +1,123 @@
+﻿@page
+@model EstudosCSharp.Pages.TesteAutenticacaoModel
+
+@{
+    ViewData["Title"] = "Teste de Autenticação";
+}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-5">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-dark text-white">
+
+                    <h4 class="mb-0">
+                        Teste de Autenticação
+                    </h4>
+
+                </div>
+
+                <div class="card-body">
+
+                    <form method="post">
+
+                        <div class="mb-3">
+
+                            <label asp-for="Credenciais.Login"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="Credenciais.Login"
+                                   class="form-control"
+                                   autocomplete="username"
+                                   placeholder="Informe seu usuário" />
+
+                            <span asp-validation-for="Credenciais.Login"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label asp-for="Credenciais.Senha"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="Credenciais.Senha"
+                                   type="password"
+                                   autocomplete="current-password"
+                                   class="form-control"
+                                   placeholder="Informe sua senha" />
+
+                            <span asp-validation-for="Credenciais.Senha"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-primary w-100">
+
+                            Testar Autenticação
+
+                        </button>
+
+                    </form>
+
+                    @if (Model.Resultado is not null) {
+                        <hr />
+
+                        @if (Model.Resultado.Sucesso) {
+                            <div class="alert alert-success">
+
+                                <h5>Autenticação realizada!</h5>
+
+                                <p>
+                                    <strong>ID:</strong>
+                                    @Model.Resultado.ID_Usuario
+                                </p>
+
+                                <p>
+                                    <strong>Nome:</strong>
+                                    @Model.Resultado.Nome
+                                </p>
+
+                                <p>
+                                    <strong>Login:</strong>
+                                    @Model.Resultado.Login
+                                </p>
+
+                                <p class="mb-0">
+                                    <strong>Perfil:</strong>
+                                    @Model.Resultado.Tipo_Usuario
+                                </p>
+
+                            </div>
+                        } else {
+                            <div class="alert alert-danger">
+
+                                @Model.Resultado.Mensagem
+
+                            </div>
+                        }
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

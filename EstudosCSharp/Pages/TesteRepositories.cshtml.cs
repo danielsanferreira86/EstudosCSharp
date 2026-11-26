@@ -6,7 +6,7 @@ namespace EstudosCSharp.Pages {
     public class TesteRepositoriesModel : PageModel {
         private readonly EstadoRepository _estadoRepository;
         private readonly CidadeRepository _cidadeRepository;
-        private readonly UsuariosRepository _usuariosRepository;
+        private readonly UsuarioRepository _usuariosRepository;
 
         public List<Estado> Estados { get; private set; } = new();
 
@@ -17,7 +17,7 @@ namespace EstudosCSharp.Pages {
         public TesteRepositoriesModel(
             EstadoRepository estadoRepository,
             CidadeRepository cidadeRepository,
-            UsuariosRepository usuarioRepository) {
+            UsuarioRepository usuarioRepository) {
             _estadoRepository = estadoRepository;
             _cidadeRepository = cidadeRepository;
             _usuariosRepository = usuarioRepository;

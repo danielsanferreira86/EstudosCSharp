@@ -4,10 +4,10 @@ using EstudosCSharp.Data;
 using EstudosCSharp.Models;
 
 namespace EstudosCSharp.Repositories {
-    public class UsuariosRepository {
+    public class UsuarioRepository {
         private readonly Conexao _conexao;
 
-        public UsuariosRepository(Conexao conexao) {
+        public UsuarioRepository(Conexao conexao) {
             _conexao = conexao;
         }
 
