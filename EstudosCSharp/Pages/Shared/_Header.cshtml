@@ -1,4 +1,4 @@
-﻿@using System.Security.Claims
+@using System.Security.Claims
 
 @{
     var nomeUsuario = User.Identity?.Name;
@@ -25,9 +25,9 @@
         <a asp-page="/Index"
            class="app-brand">
 
-            <span class="brand-icon">👟</span>
+            <span class="brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 22 7v10l-10 5-10-5V7z M7 16l5-9 5 9 M9 13h6" /></svg></span>
 
-            <span>Concessionária</span>
+            <span>Auto<span class="brand-accent">Core</span><small>-DMS</small></span>
 
         </a>
 
@@ -36,7 +36,7 @@
     <div class="header-right">
 
         <div class="user-avatar">
-            👤
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8 M4 21v-3a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v3" /></svg>
         </div>
 
         <div class="user-info">

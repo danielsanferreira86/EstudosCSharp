@@ -1,15 +1,15 @@
-﻿/* ========================================
+/* ========================================
    VARIÁVEIS GLOBAIS
    ======================================== */
 
 :root {
-    --app-primary: #172554;
-    --app-secondary: #1e293b;
-    --app-background: #eef2f7;
-    --app-text: #1e293b;
-    --app-muted: #64748b;
-    --app-border: #e2e8f0;
-    --app-white: #ffffff;
+    --app-primary: var(--color-primary);
+    --app-secondary: var(--color-surface);
+    --app-background: var(--color-background);
+    --app-text: var(--color-text);
+    --app-muted: var(--color-text-secondary);
+    --app-border: var(--color-border);
+    --app-white: var(--color-text);
     --header-height: 65px;
     --sidebar-width: 250px;
 }
@@ -43,7 +43,7 @@ body {
 
 .app-header {
     height: var(--header-height);
-    background-color: var(--app-primary);
+    background-color: var(--color-surface);
     color: var(--app-white);
     display: flex;
     align-items: center;
@@ -92,7 +92,7 @@ body {
 .user-avatar {
     width: 42px;
     height: 42px;
-    background-color: #334155;
+    background-color: var(--color-surface-hover);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -117,7 +117,7 @@ body {
 
 .user-role {
     font-size: 12px;
-    color: #cbd5e1;
+    color: var(--color-text-secondary);
 }
 
 
@@ -150,7 +150,7 @@ body {
 .app-sidebar {
     width: var(--sidebar-width);
     background-color: var(--app-secondary);
-    color: #cbd5e1;
+    color: var(--color-text-secondary);
     flex-shrink: 0;
     position: sticky;
     top: var(--header-height);
@@ -166,7 +166,7 @@ body {
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
-    color: #94a3b8;
+    color: var(--color-text-secondary);
     letter-spacing: 1px;
     padding: 18px 12px 8px;
 }
@@ -181,7 +181,7 @@ body {
     border-radius: 7px;
     border: none;
     background-color: transparent;
-    color: #cbd5e1;
+    color: var(--color-text-secondary);
     text-decoration: none;
     text-align: left;
     font-size: 14px;
@@ -190,7 +190,7 @@ body {
 
     .menu-item:hover,
     .menu-item.active {
-        background-color: #334155;
+        background-color: var(--color-surface-hover);
         color: var(--app-white);
     }
 
@@ -207,7 +207,7 @@ body {
 
     .menu-item.disabled:hover {
         background-color: transparent;
-        color: #cbd5e1;
+        color: var(--color-text-secondary);
     }
 
 .menu-logout {
@@ -235,7 +235,7 @@ body {
 .page-title {
     font-size: 28px;
     font-weight: 700;
-    color: var(--app-primary);
+    color: var(--color-text);
     margin-bottom: 6px;
 }
 
@@ -252,7 +252,7 @@ body {
 }
 
 .dashboard-card {
-    background-color: var(--app-white);
+    background-color: var(--color-card);
     border: 1px solid var(--app-border);
     border-radius: 12px;
     padding: 22px;
@@ -270,7 +270,7 @@ body {
 }
 
 .dashboard-value {
-    color: var(--app-primary);
+    color: var(--color-text);
     font-size: 30px;
     font-weight: 700;
     margin: 6px 0;
@@ -282,14 +282,14 @@ body {
 }
 
 .content-card {
-    background-color: var(--app-white);
+    background-color: var(--color-card);
     border: 1px solid var(--app-border);
     border-radius: 12px;
     padding: 24px;
 }
 
     .content-card h2 {
-        color: var(--app-primary);
+        color: var(--color-text);
         font-size: 20px;
         font-weight: 600;
     }
@@ -300,7 +300,7 @@ body {
    ======================================== */
 
 .app-footer {
-    background-color: var(--app-white);
+    background-color: var(--color-card);
     border-top: 1px solid var(--app-border);
     padding: 15px 24px;
     display: flex;
@@ -376,3 +376,22 @@ body {
         font-size: 24px;
     }
 }
+
+/* AutoCore-DMS: acabamento e componentes Bootstrap */
+.app-header { border-bottom: 2px solid var(--color-primary); }
+.app-sidebar { border-right: 1px solid var(--color-border); }
+.brand-icon, .brand-accent, .dashboard-icon { color: var(--color-primary-light); }
+.app-brand small { color: var(--color-text-secondary); font-size: .65em; }
+.brand-icon svg { width: 32px; height: 32px; }
+.menu-icon svg, .user-avatar svg { width: 20px; height: 20px; }
+.dashboard-icon svg { width: 32px; height: 32px; }
+.menu-item.active { background: var(--color-primary-dark); color: white; }
+.menu-item.disabled { opacity: .65; }
+.dashboard-card { box-shadow: none; }
+.content-card .table { --bs-table-bg: transparent; --bs-table-color: var(--color-text); --bs-table-border-color: var(--color-border); color: var(--color-text); }
+.content-card th { color: var(--color-text-secondary); }
+.app-main .btn-primary { --bs-btn-bg: #B91C1C; --bs-btn-border-color: #B91C1C; --bs-btn-hover-bg: #991B1B; --bs-btn-hover-border-color: #991B1B; --bs-btn-active-bg: #991B1B; --bs-btn-active-border-color: #991B1B; }
+.app-main .form-control, .app-main .form-select { background-color: var(--color-card); color: var(--color-text); border-color: var(--color-border); }
+.app-main .form-control:focus, .app-main .form-select:focus { border-color: var(--color-primary-light); box-shadow: 0 0 0 .2rem rgba(220,38,38,.2); }
+.app-main .form-control::placeholder { color: var(--color-text-muted); }
+.app-main a:focus-visible, .app-main button:focus-visible, .menu-item:focus-visible, .btn-menu:focus-visible { outline: 2px solid var(--color-primary-light); outline-offset: 3px; }

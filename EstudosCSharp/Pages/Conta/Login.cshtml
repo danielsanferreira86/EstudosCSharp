@@ -2,117 +2,102 @@
 @model EstudosCSharp.Pages.Conta.LoginModel
 
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Autenticação";
     Layout = "_LayoutLogin";
 }
 
-<div class="login-card">
+<div class="login-container">
 
-    <div class="login-header">
+    <section class="login-panel">
 
-        <div class="login-logo">
-            &#128095;
-        </div>
+        <div class="login-content">
 
-        <h1>Concessionária</h1>
-
-        <p>Sistema de Gestão Comercial</p>
-
-    </div>
-
-    <hr />
-
-    <div class="login-body">
-
-        <h2>Bem-vindo!</h2>
-
-        <p class="text-muted mb-4">
-            Informe suas credenciais para continuar.
-        </p>
-
-        <form method="post">
-
-            <input type="hidden" asp-for="ReturnUrl" />
-
-            <div asp-validation-summary="ModelOnly"
-                 class="text-danger mb-3">
+            <div class="login-brand">
+                <img src="~/images/autocore-logo.png"
+                     asp-append-version="true"
+                     alt="AutoCore-DMS"
+                     class="login-logo" />
             </div>
 
-            <div class="mb-3">
+            <div class="login-header">
+                <h1>Bem-vindo!</h1>
 
-                <label asp-for="Credenciais.Login"
-                       class="form-label">
-                </label>
-
-                <input asp-for="Credenciais.Login"
-                       class="form-control login-input"
-                       placeholder="Informe seu usuário"
-                       autocomplete="username"
-                       autofocus />
-
-                <span asp-validation-for="Credenciais.Login"
-                      class="text-danger validation-message">
-                </span>
-
+                <p>
+                    Informe suas credenciais para acessar o sistema.
+                </p>
             </div>
 
-            <div class="mb-4">
+            <form method="post" class="login-form">
 
-                <label asp-for="Credenciais.Senha"
-                       class="form-label">
-                </label>
+                <input type="hidden" asp-for="ReturnUrl" />
 
-                <div class="input-group">
+                <div asp-validation-summary="ModelOnly"
+                     class="login-validation">
+                </div>
 
-                    <input asp-for="Credenciais.Senha"
-                           id="senha"
-                           type="password"
-                           class="form-control login-input"
-                           placeholder="Informe sua senha"
-                           autocomplete="current-password" />
+                <div class="login-field">
 
-                    <button type="button"
-                            id="btnExibirSenha"
-                            class="btn btn-outline-secondary"
-                            aria-label="Exibir senha"
-                            aria-pressed="false">
+                    <label asp-for="Credenciais.Login">
+                        Usuário
+                    </label>
 
-                        Mostrar
+                    <input asp-for="Credenciais.Login"
+                           class="login-input"
+                           placeholder="Informe seu usuário"
+                           autocomplete="username" />
 
-                    </button>
+                    <span asp-validation-for="Credenciais.Login"
+                          class="login-validation">
+                    </span>
 
                 </div>
 
-                <span asp-validation-for="Credenciais.Senha"
-                      class="text-danger validation-message">
-                </span>
+                <div class="login-field">
 
-            </div>
+                    <label asp-for="Credenciais.Senha">
+                        Senha
+                    </label>
 
-            <button type="submit"
-                    class="btn btn-login w-100">
+                    <input asp-for="Credenciais.Senha"
+                           type="password"
+                           class="login-input"
+                           placeholder="Informe sua senha"
+                           autocomplete="current-password" />
 
-                Entrar no sistema
+                    <span asp-validation-for="Credenciais.Senha"
+                          class="login-validation">
+                    </span>
 
-            </button>
+                </div>
 
-        </form>
+                <button type="submit" class="login-button">
+                    Acessar sistema
+                </button>
 
-    </div>
+            </form>
 
-    <div class="login-footer">
+            <footer class="login-footer">
+                AutoCore-DMS &copy; @DateTime.Now.Year
+                <br />
+                Todos os direitos reservados.
+            </footer>
 
-        <hr />
+        </div>
 
-        <p>EstudosCSharp &bull; Versão 1.0</p>
+    </section>
 
-        <small>Sistema de Gestão Comercial</small>
+    <aside class="login-visual">
 
-    </div>
+        <div class="login-visual-content">
+
+            <h2>Gestão. Tecnologia. Performance.</h2>
+
+            <p>
+                Uma nova experiência em gestão automotiva.
+            </p>
+
+        </div>
+
+    </aside>
 
 </div>
-
-@section Scripts
-{
-    <partial name="_ValidationScriptsPartial" />
-}
