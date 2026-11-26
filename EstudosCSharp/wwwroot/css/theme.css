@@ -1,0 +1,57 @@
+﻿/* ========================================
+   AUTOCORE-DMS
+   DESIGN TOKENS
+   ======================================== */
+
+:root {
+    /* CORES INSTITUCIONAIS */
+
+    --ac-primary: #dc2626;
+    --ac-primary-hover: #b91c1c;
+    /* SUPERFÍCIES */
+
+    --ac-background: #0c0c0c;
+    --ac-surface: #151515;
+    --ac-surface-elevated: #1c1c1c;
+    --ac-hover: #202020;
+    --ac-border: #303030;
+    /* TEXTOS */
+
+    --ac-text: #f4f4f5;
+    --ac-text-muted: #a1a1aa;
+    /* CORES SEMÂNTICAS */
+
+    --ac-success: #22c55e;
+    --ac-warning: #eab308;
+    --ac-danger: #ef4444;
+    --ac-info: #60a5fa;
+    /* ESPAÇAMENTOS */
+
+    --ac-space-xs: 4px;
+    --ac-space-sm: 8px;
+    --ac-space-md: 12px;
+    --ac-space-lg: 16px;
+    --ac-space-xl: 20px;
+    --ac-space-2xl: 24px;
+    --ac-space-3xl: 32px;
+    /* BORDAS */
+
+    --ac-radius-sm: 4px;
+    --ac-radius-md: 6px;
+    --ac-radius-lg: 8px;
+    --ac-radius-xl: 12px;
+    /* TIPOGRAFIA */
+
+    --ac-font-xs: 12px;
+    --ac-font-sm: 14px;
+    --ac-font-md: 16px;
+    --ac-font-lg: 18px;
+    --ac-font-xl: 24px;
+    --ac-font-2xl: 28px;
+    /* TRANSIÇÕES */
+
+    --ac-transition: 0.2s ease;
+    /* CONTROLES */
+
+    --ac-control-height: 40px;
+}

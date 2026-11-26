@@ -27,6 +27,26 @@
     var paginaAtual =
         ViewContext.RouteData.Values["page"]?.ToString()
         ?? string.Empty;
+
+    bool MenuAtivo(string caminho) {
+        caminho = caminho.TrimEnd('/');
+
+        return paginaAtual.Equals(
+                   caminho,
+                   StringComparison.OrdinalIgnoreCase)
+
+               || paginaAtual.StartsWith(
+                   caminho + "/",
+                   StringComparison.OrdinalIgnoreCase);
+    }
+
+    // CONTROLE DOS MÓDULOS
+
+    var estadosAtivo =
+        MenuAtivo("/Cadastros/Estados");
+
+    var cadastrosAtivo =
+        MenuAtivo("/Cadastros");
 }
 
 <aside class="app-sidebar" id="appSidebar">

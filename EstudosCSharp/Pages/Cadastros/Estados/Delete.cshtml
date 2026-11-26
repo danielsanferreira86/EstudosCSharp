@@ -1,0 +1,168 @@
+﻿@page "{id:int}"
+@model EstudosCSharp.Pages.Cadastros.Estados.DeleteModel
+
+@{
+    ViewData["Title"] = "Excluir estado";
+}
+
+<!-- CAMINHO DE NAVEGAÇÃO -->
+<div class="cad-breadcrumb">
+
+    Cadastros / Estados / Excluir estado
+
+</div>
+
+<!-- CABEÇALHO -->
+<div class="cad-header">
+
+    <div>
+
+        <h1 class="cad-title">
+            Excluir estado
+        </h1>
+
+        <p class="cad-subtitle">
+            Confira as informações antes de confirmar a exclusão.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- FORMULÁRIO DE EXCLUSÃO -->
+<form method="post"
+      asp-route-id="@Model.Estado.ID"
+      class="cad-form">
+
+    <div class="cad-card">
+
+        <!-- CABEÇALHO DO FORMULÁRIO -->
+        <div class="cad-form-header">
+
+            <h2 class="cad-form-title">
+                Confirmação de exclusão
+            </h2>
+
+            <p class="cad-form-subtitle">
+                Identificador do registro: @Model.Estado.ID
+            </p>
+
+        </div>
+
+        <!-- CORPO DO FORMULÁRIO -->
+        <div class="cad-form-body">
+
+            <!-- MENSAGENS DE VALIDAÇÃO -->
+            <div asp-validation-summary="ModelOnly"
+                 class="cad-validation-summary">
+            </div>
+
+            <!-- DADOS DO REGISTRO -->
+            <div class="cad-details-grid">
+
+                <div class="cad-detail cad-detail-full">
+
+                    <span class="cad-detail-label">
+                        Nome do estado
+                    </span>
+
+                    <strong class="cad-detail-value">
+                        @Model.Estado.Nome
+                    </strong>
+
+                </div>
+
+                <div class="cad-detail">
+
+                    <span class="cad-detail-label">
+                        UF
+                    </span>
+
+                    <strong class="cad-detail-value">
+                        @Model.Estado.UF
+                    </strong>
+
+                </div>
+
+                <div class="cad-detail">
+
+                    <span class="cad-detail-label">
+                        Código IBGE
+                    </span>
+
+                    <strong class="cad-detail-value">
+                        @Model.Estado.Codigo_IBGE
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <!-- VALIDAR RELACIONAMENTOS -->
+            @if (Model.PossuiCidades) {
+                <div class="cad-alert cad-alert-danger">
+
+                    <strong>
+                        Exclusão bloqueada
+                    </strong>
+
+                    <p>
+                        Este estado possui cidades vinculadas
+                        e não pode ser excluído.
+                    </p>
+
+                </div>
+            } else if (!Model.PodeExcluir) {
+                <div class="cad-alert cad-alert-danger">
+
+                    <strong>
+                        Exclusão bloqueada
+                    </strong>
+
+                    <p>
+                        Este estado possui restrições
+                        que impedem sua exclusão.
+                    </p>
+
+                </div>
+            } else {
+                <div class="cad-alert cad-alert-warning">
+
+                    <strong>
+                        Atenção!
+                    </strong>
+
+                    <p>
+                        O estado será removido permanentemente
+                        do banco de dados.
+                        Esta operação não poderá ser desfeita.
+                    </p>
+
+                </div>
+            }
+
+        </div>
+
+        <!-- RODAPÉ DO FORMULÁRIO -->
+        <div class="cad-form-footer">
+
+            <a asp-page="./Index"
+               class="cad-btn cad-btn-secondary">
+
+                Cancelar
+
+            </a>
+
+            <button type="submit"
+                    class="cad-btn cad-btn-danger"
+                    disabled="@(!Model.PodeExcluir)">
+
+                Confirmar exclusão
+
+            </button>
+
+        </div>
+
+    </div>
+
+</form>

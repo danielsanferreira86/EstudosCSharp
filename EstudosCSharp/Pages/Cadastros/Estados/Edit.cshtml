@@ -1,33 +1,21 @@
 ﻿@page "{id:int}"
 @model EstudosCSharp.Pages.Cadastros.Estados.EditModel
 
+@using EstudosCSharp.ViewModels.Componentes
+
 @{
     ViewData["Title"] = "Alterar estado";
 }
 
 <!-- CAMINHO DE NAVEGAÇÃO -->
-<div class="cad-breadcrumb">
-
-    Cadastros / Estados / Alterar estado
-
-</div>
-
 <!-- CABEÇALHO -->
-<div class="cad-header">
-
-    <div>
-
-        <h1 class="cad-title">
-            Alterar estado
-        </h1>
-
-        <p class="cad-subtitle">
-            Atualize as informações da unidade federativa.
-        </p>
-
-    </div>
-
-</div>
+<partial name="_CabecalhoCadastro"
+         model="@(new CabecalhoCadastroViewModel
+         {
+             Caminho = "Cadastros / Estados / Novo estado",
+             Titulo = "Novo estado",
+             Subtitulo = "Cadastre uma unidade federativa."
+         })" />
 
 <!-- FORMULÁRIO -->
 <form method="post"

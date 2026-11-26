@@ -1,0 +1,38 @@
+﻿@model EstudosCSharp.ViewModels.Componentes.CabecalhoCadastroViewModel
+
+<!-- CAMINHO DE NAVEGAÇÃO -->
+
+<div class="cad-breadcrumb">
+
+    @Model.Caminho
+
+</div>
+
+<!-- CABEÇALHO -->
+
+<div class="cad-header">
+
+    <div>
+
+        <h1 class="cad-title">
+            @Model.Titulo
+        </h1>
+
+        <p class="cad-subtitle">
+            @Model.Subtitulo
+        </p>
+
+    </div>
+
+    @if (Model.ExibirAcao
+        && !string.IsNullOrWhiteSpace(Model.PaginaAcao)
+        && !string.IsNullOrWhiteSpace(Model.TextoAcao)) {
+        <a asp-page="@Model.PaginaAcao"
+           class="cad-btn cad-btn-primary">
+
+            @Model.TextoAcao
+
+        </a>
+    }
+
+</div>

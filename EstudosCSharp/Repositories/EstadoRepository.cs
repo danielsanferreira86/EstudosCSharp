@@ -199,7 +199,9 @@ namespace EstudosCSharp.Repositories {
 
             cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
 
-            return await cmd.ExecuteNonQueryAsync() > 0;
+            int linhasAfetadas = await cmd.ExecuteNonQueryAsync();
+
+            return linhasAfetadas == 1;
         }
 
         // VERIFICAR DUPLICIDADE DE UF

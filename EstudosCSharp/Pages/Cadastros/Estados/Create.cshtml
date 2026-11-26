@@ -1,34 +1,21 @@
 ﻿@page
 @model EstudosCSharp.Pages.Cadastros.Estados.CreateModel
 
+@using EstudosCSharp.ViewModels.Componentes
+
 @{
     ViewData["Title"] = "Novo estado";
 }
 
 <!-- CAMINHO DE NAVEGAÇÃO -->
-<div class="cad-breadcrumb">
-
-    Cadastros / Estados / Novo estado
-
-</div>
-
 <!-- CABEÇALHO -->
-<div class="cad-header">
-
-    <div>
-
-        <h1 class="cad-title">
-            Novo estado
-        </h1>
-
-        <p class="cad-subtitle">
-            Preencha as informações para cadastrar
-            uma unidade federativa.
-        </p>
-
-    </div>
-
-</div>
+<partial name="_CabecalhoCadastro"
+         model="@(new CabecalhoCadastroViewModel
+         {
+             Caminho = "Cadastros / Estados / Novo estado",
+             Titulo = "Novo estado",
+             Subtitulo = "Cadastre uma unidade federativa."
+         })" />
 
 <!-- FORMULÁRIO -->
 <form method="post"

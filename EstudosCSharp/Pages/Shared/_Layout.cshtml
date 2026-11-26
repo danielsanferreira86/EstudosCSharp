@@ -20,6 +20,10 @@
           asp-append-version="true" />
 
     <link rel="stylesheet"
+          href="~/css/theme.css"
+          asp-append-version="true" />
+
+    <link rel="stylesheet"
           href="~/css/layout.css"
           asp-append-version="true" />
 
@@ -46,6 +50,8 @@
             <div class="app-content">
 
                 <main class="app-main">
+
+                    <partial name="_Mensagens" />
 
                     @RenderBody()
 

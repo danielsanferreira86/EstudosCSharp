@@ -1,0 +1,53 @@
+﻿@{
+    var mensagemSucesso = TempData["MensagemSucesso"] as string;
+
+    var mensagemErro = TempData["MensagemErro"] as string;
+
+    var mensagemAviso = TempData["MensagemAviso"] as string;
+
+    var mensagemInfo = TempData["MensagemInfo"] as string;
+}
+
+@if (!string.IsNullOrWhiteSpace(mensagemSucesso)) {
+    <div class="cad-alert cad-alert-success"
+         role="status">
+
+        <strong>Sucesso!</strong>
+
+        <p>@mensagemSucesso</p>
+
+    </div>
+}
+
+@if (!string.IsNullOrWhiteSpace(mensagemErro)) {
+    <div class="cad-alert cad-alert-error"
+         role="alert">
+
+        <strong>Erro!</strong>
+
+        <p>@mensagemErro</p>
+
+    </div>
+}
+
+@if (!string.IsNullOrWhiteSpace(mensagemAviso)) {
+    <div class="cad-alert cad-alert-warning"
+         role="alert">
+
+        <strong>Atenção!</strong>
+
+        <p>@mensagemAviso</p>
+
+    </div>
+}
+
+@if (!string.IsNullOrWhiteSpace(mensagemInfo)) {
+    <div class="cad-alert cad-alert-info"
+         role="status">
+
+        <strong>Informação</strong>
+
+        <p>@mensagemInfo</p>
+
+    </div>
+}

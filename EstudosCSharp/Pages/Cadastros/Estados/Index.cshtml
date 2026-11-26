@@ -2,6 +2,8 @@
 @model EstudosCSharp.Pages.Cadastros.Estados.IndexModel
 
 @using EstudosCSharp.Security
+@using EstudosCSharp.ViewModels.Componentes
+
 @using Microsoft.AspNetCore.Authorization
 
 @inject IAuthorizationService AuthorizationService
@@ -16,37 +18,17 @@
 }
 
 <!-- CAMINHO DE NAVEGAÇÃO -->
-<div class="cad-breadcrumb">
-
-    Cadastros / Estados
-
-</div>
-
 <!-- CABEÇALHO DO CADASTRO -->
-<div class="cad-header">
-
-    <div>
-
-        <h1 class="cad-title">
-            Estados
-        </h1>
-
-        <p class="cad-subtitle">
-            Gerenciamento das unidades federativas.
-        </p>
-
-    </div>
-
-    @if (podeGerenciar) {
-        <a asp-page="./Create"
-           class="cad-btn cad-btn-primary">
-
-            + Novo estado
-
-        </a>
-    }
-
-</div>
+<partial name="_CabecalhoCadastro"
+         model="@(new CabecalhoCadastroViewModel
+         {
+             Caminho = "Cadastros / Estados",
+             Titulo = "Estados",
+             Subtitulo = "Gerencie as unidades federativas.",
+             TextoAcao = "+ Novo estado",
+             PaginaAcao = "/Cadastros/Estados/Create",
+             ExibirAcao = podeGerenciar
+         })" />
 
 <!-- MENSAGEM DE SUCESSO -->
 @if (TempData["MensagemSucesso"] is string sucesso) {
@@ -269,14 +251,13 @@
 
                                         </a>
 
-                                        <button type="button"
-                                                class="cad-btn-action cad-btn-delete"
-                                                disabled
-                                                title="Exclusão em desenvolvimento">
+                                        <a asp-page="./Delete"
+                                           asp-route-id="@estado.ID"
+                                           class="cad-btn cad-btn-delete">
 
                                             Excluir
 
-                                        </button>
+                                        </a>
 
                                     </div>
 
