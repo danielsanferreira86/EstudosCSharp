@@ -1,5 +1,10 @@
 ﻿@model EstudosCSharp.ViewModels.EstadoViewModel
 
+@{
+    bool bloquearCodigoIbge =
+        ViewData["BloquearCodigoIbge"] is true;
+}
+
 <div class="cad-form-grid">
 
     <!-- CÓDIGO IBGE -->
@@ -21,7 +26,8 @@
                    maxlength="2"
                    inputmode="numeric"
                    placeholder="Ex.: 51"
-                   autocomplete="off" />
+                   autocomplete="off"
+                   readonly="@bloquearCodigoIbge" />
 
             <button type="button"
                     id="btnConsultarIbge"

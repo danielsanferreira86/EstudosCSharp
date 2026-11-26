@@ -1,0 +1,126 @@
+﻿@page "{id:int}"
+@model EstudosCSharp.Pages.Cadastros.Estados.EditModel
+
+@{
+    ViewData["Title"] = "Alterar estado";
+}
+
+<!-- CAMINHO DE NAVEGAÇÃO -->
+<div class="cad-breadcrumb">
+
+    Cadastros / Estados / Alterar estado
+
+</div>
+
+<!-- CABEÇALHO -->
+<div class="cad-header">
+
+    <div>
+
+        <h1 class="cad-title">
+            Alterar estado
+        </h1>
+
+        <p class="cad-subtitle">
+            Atualize as informações da unidade federativa.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- FORMULÁRIO -->
+<form method="post"
+      asp-route-id="@Model.ID"
+      id="formEstado"
+      class="cad-form"
+      data-ibge-url="@Url.Page("./Create", "ConsultarIbge")">
+
+    <div class="cad-card">
+
+        <!-- CABEÇALHO DO FORMULÁRIO -->
+        <div class="cad-form-header">
+
+            <h2 class="cad-form-title">
+                Dados do estado
+            </h2>
+
+            <p class="cad-form-subtitle">
+                Identificador do registro: @Model.ID
+            </p>
+
+        </div>
+
+        <!-- CORPO DO FORMULÁRIO -->
+        <div class="cad-form-body">
+
+            <!-- ERROS GERAIS -->
+            <div asp-validation-summary="ModelOnly"
+                 class="cad-validation-summary">
+            </div>
+
+            <!-- AVISO DE RELACIONAMENTOS -->
+            @if (Model.PossuiCidades) {
+                <div class="cad-ibge-message cad-ibge-loading"
+                     style="margin-bottom: 20px;">
+
+                    Este estado possui cidades vinculadas.
+                    O código IBGE não poderá ser alterado.
+
+                </div>
+            }
+
+            <!-- CONFIGURAÇÃO DO FORMULÁRIO -->
+            @{
+                ViewData["BloquearCodigoIbge"] =
+                Model.PossuiCidades;
+            }
+
+            <!-- CAMPOS COMPARTILHADOS -->
+            <partial name="_Formulario"
+                     for="Estado" />
+
+            <!-- CAMPOS OBRIGATÓRIOS -->
+            <div class="cad-form-info">
+
+                Os campos identificados com
+                <span class="cad-required">*</span>
+                são obrigatórios.
+
+            </div>
+
+        </div>
+
+        <!-- RODAPÉ DO FORMULÁRIO -->
+        <div class="cad-form-footer">
+
+            <a asp-page="./Index"
+               class="cad-btn cad-btn-secondary">
+
+                Cancelar
+
+            </a>
+
+            <button type="submit"
+                    id="btnSalvarEstado"
+                    class="cad-btn cad-btn-primary"
+                    disabled>
+
+                Salvar alterações
+
+            </button>
+
+        </div>
+
+    </div>
+
+</form>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+
+    <script src="~/js/cadastros/estados.js"
+            asp-append-version="true">
+    </script>
+}

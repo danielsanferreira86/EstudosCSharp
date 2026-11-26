@@ -261,14 +261,13 @@
 
                                     <div class="cad-actions">
 
-                                        <button type="button"
-                                                class="cad-btn-action cad-btn-edit"
-                                                disabled
-                                                title="Alteração em desenvolvimento">
+                                        <a asp-page="./Edit"
+                                           asp-route-id="@estado.ID"
+                                           class="cad-btn cad-btn-edit">
 
                                             Editar
 
-                                        </button>
+                                        </a>
 
                                         <button type="button"
                                                 class="cad-btn-action cad-btn-delete"
