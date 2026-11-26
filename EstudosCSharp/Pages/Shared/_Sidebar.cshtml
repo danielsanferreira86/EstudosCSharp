@@ -1,0 +1,141 @@
+﻿@using EstudosCSharp.Security
+@using Microsoft.AspNetCore.Authorization
+
+@inject IAuthorizationService AuthorizationService
+
+@{
+    var podeConsultarEstados =
+        (await AuthorizationService.AuthorizeAsync(
+            User,
+            Permissoes.ConsultarEstados)).Succeeded;
+
+    var podeConsultarCidades =
+        (await AuthorizationService.AuthorizeAsync(
+            User,
+            Permissoes.ConsultarCidades)).Succeeded;
+
+    var podeGerenciarUsuarios =
+        (await AuthorizationService.AuthorizeAsync(
+            User,
+            Permissoes.GerenciarUsuarios)).Succeeded;
+
+    var podeAlterarSenha =
+        (await AuthorizationService.AuthorizeAsync(
+            User,
+            Permissoes.AlterarPropriaSenha)).Succeeded;
+
+    var paginaAtual =
+        ViewContext.RouteData.Values["page"]?.ToString()
+        ?? string.Empty;
+}
+
+<aside class="app-sidebar" id="appSidebar">
+
+    <nav class="sidebar-nav"
+         aria-label="Menu principal">
+
+        <div class="menu-title">
+            Principal
+        </div>
+
+        <a asp-page="/Index"
+           class="menu-item @(paginaAtual == "/Index"
+                          ? "active" : "")">
+
+            <span class="menu-icon">🏠</span>
+
+            <span>Dashboard</span>
+
+        </a>
+
+        <div class="menu-title">
+            Cadastros
+        </div>
+
+        @if (podeConsultarEstados) {
+            <span class="menu-item disabled"
+                  aria-disabled="true">
+
+                <span class="menu-icon">🗺️</span>
+
+                <span>Estados</span>
+
+            </span>
+        }
+
+        @if (podeConsultarCidades) {
+            <span class="menu-item disabled"
+                  aria-disabled="true">
+
+                <span class="menu-icon">📍</span>
+
+                <span>Cidades</span>
+
+            </span>
+        }
+
+        <span class="menu-item disabled"
+              aria-disabled="true">
+
+            <span class="menu-icon">👥</span>
+
+            <span>Clientes</span>
+
+        </span>
+
+        <span class="menu-item disabled"
+              aria-disabled="true">
+
+            <span class="menu-icon">📦</span>
+
+            <span>Produtos</span>
+
+        </span>
+
+        @if (podeGerenciarUsuarios) {
+            <div class="menu-title">
+                Administração
+            </div>
+
+            <span class="menu-item disabled"
+                  aria-disabled="true">
+
+                <span class="menu-icon">🛡️</span>
+
+                <span>Usuários</span>
+
+            </span>
+        }
+
+        <div class="menu-title">
+            Minha conta
+        </div>
+
+        @if (podeAlterarSenha) {
+            <span class="menu-item disabled"
+                  aria-disabled="true">
+
+                <span class="menu-icon">🔑</span>
+
+                <span>Alterar senha</span>
+
+            </span>
+        }
+
+        <form method="post"
+              asp-page="/Conta/Logout">
+
+            <button type="submit"
+                    class="menu-item menu-logout">
+
+                <span class="menu-icon">🚪</span>
+
+                <span>Sair do sistema</span>
+
+            </button>
+
+        </form>
+
+    </nav>
+
+</aside>

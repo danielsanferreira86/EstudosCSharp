@@ -1,0 +1,56 @@
+﻿@using System.Security.Claims
+
+@{
+    var nomeUsuario = User.Identity?.Name;
+
+    var perfilUsuario = User
+        .FindFirst(ClaimTypes.Role)?.Value;
+}
+
+<header class="app-header">
+
+    <div class="header-left">
+
+        <button type="button"
+                id="btnMenu"
+                class="btn-menu"
+                aria-label="Alternar menu"
+                aria-controls="appSidebar"
+                aria-expanded="true">
+
+            ☰
+
+        </button>
+
+        <a asp-page="/Index"
+           class="app-brand">
+
+            <span class="brand-icon">👟</span>
+
+            <span>Concessionária</span>
+
+        </a>
+
+    </div>
+
+    <div class="header-right">
+
+        <div class="user-avatar">
+            👤
+        </div>
+
+        <div class="user-info">
+
+            <span class="user-name">
+                @nomeUsuario
+            </span>
+
+            <span class="user-role">
+                @perfilUsuario
+            </span>
+
+        </div>
+
+    </div>
+
+</header>

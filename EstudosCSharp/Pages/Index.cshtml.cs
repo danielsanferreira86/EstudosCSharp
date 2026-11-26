@@ -11,10 +11,7 @@ namespace EstudosCSharp.Pages {
         public string LoginUsuario { get; private set; }
             = string.Empty;
 
-        public string TipoUsuario { get; private set; }
-            = string.Empty;
-
-        public string ID_Usuario { get; private set; }
+        public string PerfilUsuario { get; private set; }
             = string.Empty;
 
         public void OnGet() {
@@ -22,14 +19,11 @@ namespace EstudosCSharp.Pages {
                 User.Identity?.Name ?? string.Empty;
 
             LoginUsuario =
-                User.FindFirstValue("Login") ?? string.Empty;
-
-            TipoUsuario =
-                User.FindFirstValue(ClaimTypes.Role)
+                User.FindFirst("Login")?.Value
                 ?? string.Empty;
 
-            ID_Usuario =
-                User.FindFirstValue(ClaimTypes.NameIdentifier)
+            PerfilUsuario =
+                User.FindFirst(ClaimTypes.Role)?.Value
                 ?? string.Empty;
         }
     }

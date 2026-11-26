@@ -1,86 +1,176 @@
 ﻿@page
 @model EstudosCSharp.Pages.IndexModel
 
+@using EstudosCSharp.Security
+@using Microsoft.AspNetCore.Authorization
+
+@inject IAuthorizationService AuthorizationService
+
 @{
-    ViewData["Title"] = "Página Inicial";
+    ViewData["Title"] = "Dashboard";
+
+    var podeGerenciarUsuarios =
+        (await AuthorizationService.AuthorizeAsync(
+            User,
+            Permissoes.GerenciarUsuarios)).Succeeded;
 }
 
-<div class="container mt-4">
+<h1 class="page-title">
+    Dashboard
+</h1>
 
-    <div class="card shadow-sm">
+<p class="page-subtitle">
 
-        <div class="card-header bg-dark text-white">
+    Bem-vindo, @Model.NomeUsuario!
 
-            <h4 class="mb-0">
-                Loja de Calçados
-            </h4>
+</p>
 
+<div class="dashboard-grid">
+
+    <div class="dashboard-card">
+
+        <div class="dashboard-icon">👥</div>
+
+        <div class="dashboard-label">
+            Clientes
         </div>
 
-        <div class="card-body">
+        <div class="dashboard-value">
+            —
+        </div>
 
-            <h2>
-                Bem-vindo, @Model.NomeUsuario!
-            </h2>
+        <div class="dashboard-description">
+            Cadastro de clientes
+        </div>
 
-            <p class="text-muted">
-                Você está autenticado no sistema.
-            </p>
+    </div>
 
-            <hr />
+    <div class="dashboard-card">
 
-            <h5>Informações da autenticação</h5>
+        <div class="dashboard-icon">📦</div>
 
-            <table class="table table-bordered">
+        <div class="dashboard-label">
+            Produtos
+        </div>
 
-                <tbody>
+        <div class="dashboard-value">
+            —
+        </div>
 
-                    <tr>
-                        <th>ID do usuário</th>
-                        <td>@Model.ID_Usuario</td>
-                    </tr>
+        <div class="dashboard-description">
+            Cadastro de produtos
+        </div>
 
-                    <tr>
-                        <th>Nome</th>
-                        <td>@Model.NomeUsuario</td>
-                    </tr>
+    </div>
 
-                    <tr>
-                        <th>Login</th>
-                        <td>@Model.LoginUsuario</td>
-                    </tr>
+    <div class="dashboard-card">
 
-                    <tr>
-                        <th>Perfil</th>
-                        <td>@Model.TipoUsuario</td>
-                    </tr>
+        <div class="dashboard-icon">🛒</div>
 
-                    <tr>
-                        <th>Autenticação</th>
-                        <td>
-                            <span class="badge bg-success">
-                                Autenticado
-                            </span>
-                        </td>
-                    </tr>
+        <div class="dashboard-label">
+            Vendas
+        </div>
 
-                </tbody>
+        <div class="dashboard-value">
+            —
+        </div>
 
-            </table>
+        <div class="dashboard-description">
+            Movimentações comerciais
+        </div>
 
-            <form method="post"
-                  asp-page="/Conta/Logout">
+    </div>
 
-                <button type="submit"
-                        class="btn btn-danger">
+    @if (podeGerenciarUsuarios) {
+        <div class="dashboard-card">
 
-                    Sair do sistema
+            <div class="dashboard-icon">🛡️</div>
 
-                </button>
+            <div class="dashboard-label">
+                Usuários
+            </div>
 
-            </form>
+            <div class="dashboard-value">
+                —
+            </div>
+
+            <div class="dashboard-description">
+                Administração de usuários
+            </div>
 
         </div>
+    }
+
+</div>
+
+<div class="content-card">
+
+    <h2>
+        Informações do sistema
+    </h2>
+
+    <hr />
+
+    <div class="table-responsive">
+
+        <table class="table table-borderless mb-0">
+
+            <tbody>
+
+                <tr>
+                    <th>Aplicação</th>
+                    <td>EstudosCSharp</td>
+                </tr>
+
+                <tr>
+                    <th>Versão</th>
+                    <td>1.0</td>
+                </tr>
+
+                <tr>
+                    <th>Tecnologia</th>
+                    <td>ASP.NET Core Razor Pages</td>
+                </tr>
+
+                <tr>
+                    <th>Framework</th>
+                    <td>.NET 9.0</td>
+                </tr>
+
+                <tr>
+                    <th>Banco de dados</th>
+                    <td>SQL Server Express</td>
+                </tr>
+
+                <tr>
+                    <th>Usuário conectado</th>
+                    <td>@Model.NomeUsuario</td>
+                </tr>
+
+                <tr>
+                    <th>Login</th>
+                    <td>@Model.LoginUsuario</td>
+                </tr>
+
+                <tr>
+                    <th>Perfil</th>
+                    <td>@Model.PerfilUsuario</td>
+                </tr>
+
+                <tr>
+                    <th>Autenticação</th>
+                    <td>
+
+                        <span class="badge bg-success">
+                            Autenticado
+                        </span>
+
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
 
     </div>
 
