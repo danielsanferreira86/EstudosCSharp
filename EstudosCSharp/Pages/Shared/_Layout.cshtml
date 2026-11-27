@@ -53,17 +53,20 @@
 
                     <partial name="_Mensagens" />
 
-                    @RenderBody()
+            @RenderBody()
 
-                </main>
+        </main>
 
                 <partial name="_Footer" />
 
             </div>
 
-        </div>
-
     </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2026 - EstudosCSharp - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js">
     </script>
@@ -78,6 +81,7 @@
     @await RenderSectionAsync(
     "Scripts", required: false)
 
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>
